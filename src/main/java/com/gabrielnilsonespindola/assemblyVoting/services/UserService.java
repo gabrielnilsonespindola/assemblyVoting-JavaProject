@@ -26,6 +26,10 @@ public class UserService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado")); 
 	}
 	
+	public User insert(User obj) {
+		return repo.insert(obj);
+	}
+	
 	
 
 }
