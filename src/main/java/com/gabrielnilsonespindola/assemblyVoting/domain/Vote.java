@@ -6,9 +6,11 @@ import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.gabrielnilsonespindola.assemblyVoting.enums.VoteStatus;
 
+@Document(collection = "vote")
 public class Vote implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

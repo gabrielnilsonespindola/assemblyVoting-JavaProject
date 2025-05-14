@@ -20,6 +20,7 @@ public class Agenda implements Serializable {
 	@Id
 	private String id;
 	private String title;
+	private Integer number;
 	private String descricao;
 	private LocalDate date;
 	
@@ -29,10 +30,19 @@ public class Agenda implements Serializable {
 	public Agenda() {
 	}
 
-	public Agenda(String id, String title, String descricao, LocalDate date, List<Vote> votes) {
+	public Agenda(String id, String title,Integer number, LocalDate date) {
+		this.id = id;
+		this.title = title;
+		this.number = number;		// Construtor responsavel do AgendaDTO- InserFormulary de New Agenda.
+		this.date = date;
+	}	
+	
+	
+	public Agenda(String id, String title,Integer number, String descricao, LocalDate date, List<Vote> votes) {
 		super();
 		this.id = id;
 		this.title = title;
+		this.number = number;
 		this.descricao = descricao;
 		this.date = date;
 		this.votes = votes;
@@ -54,6 +64,14 @@ public class Agenda implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
 	}
 
 	public String getDescricao() {
@@ -93,5 +111,7 @@ public class Agenda implements Serializable {
 		Agenda other = (Agenda) obj;
 		return Objects.equals(id, other.id);
 	}
+
+
 
 }

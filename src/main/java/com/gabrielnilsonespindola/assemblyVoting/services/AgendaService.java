@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gabrielnilsonespindola.assemblyVoting.domain.Agenda;
-import com.gabrielnilsonespindola.assemblyVoting.domain.User;
+import com.gabrielnilsonespindola.assemblyVoting.dto.AgendaDTO;
 import com.gabrielnilsonespindola.assemblyVoting.repository.AgendaRepository;
 import com.gabrielnilsonespindola.assemblyVoting.services.exceptions.ObjectNotFoundException;
 
@@ -28,5 +28,12 @@ public class AgendaService {
 	}
 	
 	
-
+	public Agenda insertFormulary(Agenda obj) {
+		return repo.insert(obj);
+	}
+	
+	public Agenda fromDTO(AgendaDTO objDtO) {
+		return new Agenda(objDtO.getId(), objDtO.getTitle(), objDtO.getNumber(), objDtO.getDate());
+	
+	}
 }
