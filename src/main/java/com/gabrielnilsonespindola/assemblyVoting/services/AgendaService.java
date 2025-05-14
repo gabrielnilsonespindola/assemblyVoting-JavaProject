@@ -2,10 +2,8 @@ package com.gabrielnilsonespindola.assemblyVoting.services;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.gabrielnilsonespindola.assemblyVoting.domain.Agenda;
 import com.gabrielnilsonespindola.assemblyVoting.dto.AgendaDTO;
 import com.gabrielnilsonespindola.assemblyVoting.repository.AgendaRepository;
@@ -36,4 +34,25 @@ public class AgendaService {
 		return new Agenda(objDtO.getId(), objDtO.getTitle(), objDtO.getNumber(), objDtO.getDate());
 	
 	}
+	
+	public void delete (String id) {
+		findById(id);
+		repo.deleteById(id);
+	}
+	
+	public Agenda update(Agenda obj) {
+		Agenda newObj = findById(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+	
+	private void updateData(Agenda newObj, Agenda obj) {
+		newObj.setId(obj.getId());
+		newObj.setTitle(obj.getTitle());
+		newObj.setNumber(obj.getNumber());
+		newObj.setDescricao(obj.getDescricao());
+		newObj.setDate(obj.getDate());
+		
+	}
+	
 }

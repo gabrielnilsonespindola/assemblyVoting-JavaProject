@@ -33,7 +33,7 @@ public class Agenda implements Serializable {
 	public Agenda(String id, String title,Integer number, LocalDate date) {
 		this.id = id;
 		this.title = title;
-		this.number = number;		// Construtor responsavel do AgendaDTO- InserFormulary de New Agenda.
+		this.number = number;		// Construtor responsavel do AgendaDTO- InsertFormulary  New Agenda.
 		this.date = date;
 	}	
 	
