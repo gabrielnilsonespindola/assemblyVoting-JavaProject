@@ -43,7 +43,7 @@ public class UserResource {
 	}
 	
 	@RequestMapping(value="/{id}/agendas", method=RequestMethod.GET)
- 	public ResponseEntity<List<Agenda>> findAgendas(@PathVariable String id) {
+ 	public ResponseEntity<List<Agenda>> findAgendas(@PathVariable String id) {    // Buscar pautas por "user"
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(obj.getAgendas());
 	}

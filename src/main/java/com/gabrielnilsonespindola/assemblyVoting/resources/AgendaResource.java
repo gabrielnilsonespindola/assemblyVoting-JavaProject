@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.gabrielnilsonespindola.assemblyVoting.domain.Agenda;
+import com.gabrielnilsonespindola.assemblyVoting.domain.User;
 import com.gabrielnilsonespindola.assemblyVoting.domain.Vote;
 import com.gabrielnilsonespindola.assemblyVoting.dto.AgendaDTO;
 import com.gabrielnilsonespindola.assemblyVoting.services.AgendaService;
@@ -57,6 +58,12 @@ public class AgendaResource {
 		obj.setId(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value="/{id}/votes", method=RequestMethod.GET)
+ 	public ResponseEntity<List<Vote>> findVotes(@PathVariable String id) {      //Buscar "votes" por pautas
+		Agenda obj = service.findById(id);
+		return ResponseEntity.ok().body(obj.getVotes());
 	}
 	
 	
