@@ -1,35 +1,44 @@
 package com.gabrielnilsonespindola.assemblyVoting.domain;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.gabrielnilsonespindola.assemblyVoting.enums.VoteStatus;
 
 @Document(collection = "agenda")
-public class Agenda {
+public class Agenda implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private String id;
-	private Date date;
 	private String title;
-	private String vote;
-	private String body;
-	private String author;
+	private String descricao;
+	private LocalDate date;
 	
+	@DBRef(lazy = true)
+	private List<Vote> votes = new ArrayList<>();
+
 	public Agenda() {
 	}
 
-	public Agenda(String id, Date date, String title, String vote, String body, String author) {
+	public Agenda(String id, String title, String descricao, LocalDate date, List<Vote> votes) {
 		super();
 		this.id = id;
-		this.date = date;
 		this.title = title;
-		this.vote = vote;
-		this.body = body;
-		this.author = author;
+		this.descricao = descricao;
+		this.date = date;
+		this.votes = votes;
 	}
+
+	
 
 	public String getId() {
 		return id;
@@ -37,14 +46,6 @@ public class Agenda {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public String getTitle() {
@@ -55,30 +56,27 @@ public class Agenda {
 		this.title = title;
 	}
 
-	public String getVote() {
-		return vote;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setVote(String vote) {
-		this.vote = vote;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public String getBody() {
-		return body;
+	public LocalDate getDate() {
+		return date;
 	}
 
-	public void setBody(String body) {
-		this.body = body;
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
 
-	public String getAuthor() {
-		return author;
+	public List<Vote> getVotes() {
+		return votes;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -95,9 +93,5 @@ public class Agenda {
 		Agenda other = (Agenda) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
-	
 
 }

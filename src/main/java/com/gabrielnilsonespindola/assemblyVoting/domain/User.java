@@ -13,16 +13,16 @@ public class User implements Serializable {
 	@Id
 	private String id;
 	private String name;
-	private String vote;
+	
 	
 	public User() {
 	}
 
-	public User(String id, String name, String vote) {
+	public User(String id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.vote = vote;
+		
 	}
 
 	public String getId() {
@@ -41,14 +41,7 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
-	public String getVote() {
-		return vote;
-	}
-
-	public void setVote(String vote) {
-		this.vote = vote;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
