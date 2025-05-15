@@ -2,22 +2,26 @@ package com.gabrielnilsonespindola.assemblyVoting.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.gabrielnilsonespindola.assemblyVoting.domain.User;
 import com.gabrielnilsonespindola.assemblyVoting.domain.VotingSession;
-import com.gabrielnilsonespindola.assemblyVoting.dto.UserDTO;
 import com.gabrielnilsonespindola.assemblyVoting.dto.VotingSessionDTO;
 import com.gabrielnilsonespindola.assemblyVoting.services.VotingSessionService;
 
+@RestController
+@RequestMapping(value = "/sessions")
 public class VotingSessionResource {
 	
 	@Autowired
@@ -37,12 +41,22 @@ public class VotingSessionResource {
 		return ResponseEntity.ok().body(new VotingSessionDTO(obj));
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody VotingSessionDTO objDto) {
+	@RequestMapping(method=RequestMethod.POST)   //GENERICO
+	public ResponseEntity<Void> insert(@RequestBody VotingSessionDTO objDto) {      
 		VotingSession obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	
+	@RequestMapping(method=RequestMethod.POST)
+	public ResponseEntity<Void> startSession(@RequestBody VotingSessionDTO objDto) {
+		VotingSession obj = service.fromDTO(objDto);
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
+	
+	
 
 }
