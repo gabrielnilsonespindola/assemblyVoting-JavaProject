@@ -36,5 +36,7 @@ public class VoteService {
 		return new Vote (objDtO.getId(), objDtO.getAgenda(), objDtO.getUser(),objDtO.getVoteStatus() ,objDtO.getVoteTime() );
 	}
 	
+	
+
 
 }

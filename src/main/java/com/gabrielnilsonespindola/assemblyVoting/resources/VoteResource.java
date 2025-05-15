@@ -2,6 +2,7 @@ package com.gabrielnilsonespindola.assemblyVoting.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.gabrielnilsonespindola.assemblyVoting.domain.User;
 import com.gabrielnilsonespindola.assemblyVoting.domain.Vote;
+import com.gabrielnilsonespindola.assemblyVoting.dto.UserDTO;
 import com.gabrielnilsonespindola.assemblyVoting.dto.VoteDTO;
 import com.gabrielnilsonespindola.assemblyVoting.services.VoteService;
 
@@ -24,16 +27,17 @@ public class VoteResource {
 	private VoteService service;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Vote>> findAll() {
+	public ResponseEntity<List<VoteDTO>> findAll() {
 		List<Vote> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+		List<VoteDTO> listDto = list.stream().map(x -> new VoteDTO(x)).collect(Collectors.toList());
+	    return ResponseEntity.ok().body(listDto);   
 
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
- 	public ResponseEntity<Vote> findById(@PathVariable String id) {
+	public ResponseEntity<VoteDTO> findById(@PathVariable String id) {
 		Vote obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().body(new VoteDTO(obj));
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
