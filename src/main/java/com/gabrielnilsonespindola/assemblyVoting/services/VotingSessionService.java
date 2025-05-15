@@ -9,8 +9,12 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.stereotype.Service;
 
 import com.gabrielnilsonespindola.assemblyVoting.domain.Agenda;
+import com.gabrielnilsonespindola.assemblyVoting.domain.Vote;
 import com.gabrielnilsonespindola.assemblyVoting.domain.VotingSession;
+import com.gabrielnilsonespindola.assemblyVoting.dto.VotingResultDTO;
 import com.gabrielnilsonespindola.assemblyVoting.dto.VotingSessionDTO;
+import com.gabrielnilsonespindola.assemblyVoting.enums.VoteStatus;
+import com.gabrielnilsonespindola.assemblyVoting.repository.VoteRepository;
 import com.gabrielnilsonespindola.assemblyVoting.repository.VotingSessionRepository;
 import com.gabrielnilsonespindola.assemblyVoting.services.exceptions.ObjectNotFoundException;
 
@@ -19,6 +23,9 @@ public class VotingSessionService {
 
 	@Autowired
 	private VotingSessionRepository repo;
+	
+	@Autowired
+	private VoteRepository repoVote;
 
 	@DBRef
 	private Agenda agenda;
@@ -58,6 +65,45 @@ public class VotingSessionService {
 		// Salvar a sessão
 		return repo.save(session);
 	}
+		
+	
+	public VotingResultDTO getVotingResult(String agendaId) {
+	    
+	    Agenda agenda = service.findById(agendaId);   // 1. Buscar a agenda pelo ID	    
+	    List<Vote> votes = repoVote.findByAgendaId(agendaId); // 2. Buscar todos os votos relacionados a essa agenda (supondo que o repoVote tenha esse método)
+	    
+	    int yes = 0;            // 3. Contadores para votos sim e não
+	    int no = 0;
+	    
+	    
+	    for (Vote vote : votes) {
+	        VoteStatus status = vote.getVoteStatus();         // 4. Percorrer todos os votos e contar
+	        if (status == VoteStatus.YES) {
+	            yes++;
+	        } else if (status == VoteStatus.NO) {
+	            no++;
+	        }
+	    }
+	    
+	    String result;
+	    if (yes > no) {
+	        result = "Aprovado";        // 5. Definir o resultado baseado na contagem
+	    } else if (no > yes) {
+	        result = "Rejeitado";
+	    } else {
+	        result = "Empate";
+	    }
+	    
+	    
+	    return new VotingResultDTO(
+	        agenda.getId(),
+	        agenda.getTitle(),         // 6. Montar e retornar o DTO com o resultado
+	        yes,
+	        no,
+	        result
+	    );
+	}
+
 	
 	
 

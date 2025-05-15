@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.gabrielnilsonespindola.assemblyVoting.domain.VotingSession;
+import com.gabrielnilsonespindola.assemblyVoting.dto.VotingResultDTO;
 import com.gabrielnilsonespindola.assemblyVoting.dto.VotingSessionDTO;
 import com.gabrielnilsonespindola.assemblyVoting.services.VotingSessionService;
 
@@ -56,6 +57,12 @@ public class VotingSessionResource {
 		VotingSession obj = service.startSession(agendaId, duration);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@RequestMapping(value="/result/{agendaId}", method=RequestMethod.GET)
+	public ResponseEntity<VotingResultDTO> getResult(@PathVariable String agendaId) {
+	    VotingResultDTO result = service.getVotingResult(agendaId);
+	    return ResponseEntity.ok().body(result);
 	}
 
 }

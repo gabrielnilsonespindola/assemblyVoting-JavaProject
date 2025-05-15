@@ -27,6 +27,7 @@ public class VotingSessionDTO implements Serializable {
 		opening = obj.getOpening();
 		closure = obj.getClosure();
 		agenda = obj.getAgenda();
+		durationInMinutes = obj.getDurationInMinutes();
 	}
 
 	public String getId() {
