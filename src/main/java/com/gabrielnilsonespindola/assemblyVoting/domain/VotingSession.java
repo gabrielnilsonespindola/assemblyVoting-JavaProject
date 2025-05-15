@@ -13,26 +13,28 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "session")
 public class VotingSession implements Serializable {
 	private static final long serialVersionUID = 1L;
-		
+
 	@Id
 	private String id;
 	private LocalDateTime opening;
 	private LocalDateTime closure;
-	
-	@DBRef(lazy = true)
 	private Agenda agenda;
+	private Long durationInMinutes;	
 	
+
 	@DBRef(lazy = true)
 	private List<Vote> votes = new ArrayList<>();
-	
+
 	public VotingSession() {
 	}
 
-	public VotingSession(String id, LocalDateTime opening, LocalDateTime closure, Agenda agenda) {
+	public VotingSession(String id, LocalDateTime opening, LocalDateTime closure, Long durationInMinutes,
+			Agenda agenda) {
 		super();
 		this.id = id;
 		this.opening = opening;
 		this.closure = closure;
+		this.durationInMinutes = durationInMinutes;
 		this.agenda = agenda;
 	}
 
@@ -60,6 +62,13 @@ public class VotingSession implements Serializable {
 		this.closure = closure;
 	}
 
+	public Long getDurationInMinutes() {
+		return durationInMinutes;
+	}
+
+	public void setDurationInMinutes(Long durationInMinutes) {
+		this.durationInMinutes = durationInMinutes;
+	}
 
 	public Agenda getAgenda() {
 		return agenda;
@@ -85,11 +94,5 @@ public class VotingSession implements Serializable {
 		VotingSession other = (VotingSession) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
-	
-	
-	
 
 }

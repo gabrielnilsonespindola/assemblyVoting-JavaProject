@@ -40,10 +40,10 @@ public class VotingSessionService {
 	}
 
 	public VotingSession fromDTO(VotingSessionDTO objDtO) {
-		return new VotingSession(objDtO.getId(), objDtO.getOpening(), objDtO.getClosure(), objDtO.getAgenda());
+		return new VotingSession(objDtO.getId(), objDtO.getOpening(), objDtO.getClosure(),objDtO.getDurationInMinutes(), objDtO.getAgenda());
 	}
 
-	public void startSession(String agendaId, Optional<Long> durationInMinutes) {
+	public VotingSession startSession(String agendaId, Optional<Long> durationInMinutes) {
 		Agenda agenda = service.findById(agendaId); // Buscar a pauta/agenda pelo ID
 
 		// Criar nova sessão de votação
@@ -56,7 +56,7 @@ public class VotingSessionService {
 		session.setClosure(session.getOpening().plusMinutes(duration));
 
 		// Salvar a sessão
-		repo.save(session);
+		return repo.save(session);
 	}
 	
 	

@@ -15,6 +15,7 @@ public class VotingSessionDTO implements Serializable {
 	private LocalDateTime opening;
 	private LocalDateTime closure;
 	private Agenda agenda;
+	private Long durationInMinutes;
 	
 
 	public VotingSessionDTO() {
@@ -59,6 +60,16 @@ public class VotingSessionDTO implements Serializable {
 	public void setAgenda(Agenda agenda) {
 		this.agenda = agenda;
 	}
+
+	public Long getDurationInMinutes() {
+		return durationInMinutes;
+	}
+
+	public void setDurationInMinutes(Long durationInMinutes) {
+		this.durationInMinutes = durationInMinutes;
+	}
+	
+	
 	
 	
 	
