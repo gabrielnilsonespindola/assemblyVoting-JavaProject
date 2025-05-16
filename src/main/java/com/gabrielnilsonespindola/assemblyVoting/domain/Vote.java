@@ -19,10 +19,10 @@ public class Vote implements Serializable {
 	private String id;
 	
 	@DBRef(lazy = true)
-	private Agenda agenda;
+	private Agenda agendaId;
 
 	@DBRef(lazy = true)
-	private User user;
+	private User userId;
 	
 	private VoteStatus voteStatus;
 	private LocalDateTime voteTime;
@@ -32,11 +32,11 @@ public class Vote implements Serializable {
 	}
 
 
-	public Vote(String id, Agenda agenda, User user, VoteStatus voteStatus, LocalDateTime voteTime) {
+	public Vote(String id, Agenda agendaId, User userId, VoteStatus voteStatus, LocalDateTime voteTime) {
 		super();
 		this.id = id;
-		this.agenda = agenda;
-		this.user = user;
+		this.agendaId = agendaId;
+		this.userId = userId;
 		this.voteStatus = voteStatus;
 		this.voteTime = voteTime;
 	}
@@ -53,22 +53,22 @@ public class Vote implements Serializable {
 
 
 	public Agenda getAgenda() {
-		return agenda;
+		return agendaId;
 	}
 
 
-	public void setAgenda(Agenda agenda) {
-		this.agenda = agenda;
+	public void setAgenda(Agenda agendaId) {
+		this.agendaId = agendaId;
 	}
 
 
 	public User getUser() {
-		return user;
+		return userId;
 	}
 
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(User userId) {
+		this.userId = userId;
 	}
 
 

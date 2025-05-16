@@ -11,8 +11,8 @@ public class VoteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String id;
-	private Agenda agenda;
-	private User user;
+	private Agenda agendaId;
+	private User userId;
 	private VoteStatus voteStatus;
 	private LocalDateTime voteTime;
 
@@ -21,8 +21,8 @@ public class VoteDTO implements Serializable {
 	
 	public VoteDTO(Vote obj) {
 		id = obj.getId();
-		agenda = obj.getAgenda();
-		user = obj.getUser();
+		agendaId = obj.getAgenda();
+		userId = obj.getUser();
 		voteStatus = obj.getVoteStatus();
 		voteTime = obj.getVoteTime();
 				
@@ -37,19 +37,19 @@ public class VoteDTO implements Serializable {
 	}
 
 	public Agenda getAgenda() {
-		return agenda;
+		return agendaId;
 	}
 
 	public void setAgenda(Agenda agenda) {
-		this.agenda = agenda;
+		this.agendaId = agenda;
 	}
 
 	public User getUser() {
-		return user;
+		return userId;
 	}
 
 	public void setUser(User user) {
-		this.user = user;
+		this.userId = user;
 	}
 
 	public VoteStatus getVoteStatus() {

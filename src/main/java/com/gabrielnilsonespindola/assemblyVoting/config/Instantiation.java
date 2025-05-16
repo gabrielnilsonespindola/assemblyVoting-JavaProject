@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import com.gabrielnilsonespindola.assemblyVoting.repository.AgendaRepository;
 import com.gabrielnilsonespindola.assemblyVoting.repository.UserRepository;
 import com.gabrielnilsonespindola.assemblyVoting.repository.VoteRepository;
+import com.gabrielnilsonespindola.assemblyVoting.repository.VotingSessionRepository;
 
 @Configuration
 public class Instantiation implements CommandLineRunner {
@@ -23,6 +24,9 @@ public class Instantiation implements CommandLineRunner {
 	
 	@Autowired
 	private VoteRepository voteRepository;
+	
+	@Autowired
+	private VotingSessionRepository votingSessionRepository;
 	
 	@Override
 	public void run(String... args) throws Exception {
