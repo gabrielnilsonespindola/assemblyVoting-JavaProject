@@ -17,50 +17,49 @@ import com.gabrielnilsonespindola.assemblyVoting.services.exceptions.ObjectNotFo
 
 @Service
 public class VoteService {
-	
+
 	@Autowired
 	private VoteRepository repo;
-	
+
 	@Autowired
-    private AgendaService agendaService;
-	
+	private AgendaService agendaService;
+
 	@Autowired
 	private UserService userService;
-	
-	
-	
-	public List <Vote> findAll () {
-		return repo.findAll();	
+
+	public List<Vote> findAll() {
+		return repo.findAll();
 	}
-	
+
 	public Vote findById(String id) {
 		Optional<Vote> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado")); 
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
-	
+
 	public Vote insert(Vote obj) {
 		return repo.insert(obj);
 	}
 
-
 	public Vote fromDTO(VoteDTO dto) {
-	    Agenda agenda = agendaService.findById(dto.getAgenda().getId());
-	    User user = userService.findById(dto.getUser().getId());
-	    
-	    return new Vote(null, agenda, user, dto.getVoteStatus(), LocalDateTime.now());
+		Agenda agenda = agendaService.findById(dto.getAgenda().getId());
+		User user = userService.findById(dto.getUser().getId());
+
+		return new Vote(null, agenda, user, dto.getVoteStatus(), LocalDateTime.now());
 	}
-	
+
 	public Vote registerVote(Vote obj) {
-	    String agendaId = obj.getAgenda().getId();
-	    String userId = obj.getUser().getId();
+		String agendaId = obj.getAgenda().getId();
+		String userId = obj.getUser().getId();
 
-	    Optional<Vote> existingVote = repo.findByAgendaIdAndUserId(agendaId, userId);   //Metodo para registrar voto sem que tenha repetição de voto por parte do User.
+		Optional<Vote> existingVote = repo.findByAgendaIdAndUserId(agendaId, userId); // Metodo para registrar voto sem
+																						// que tenha repetição de voto
+																						// por parte do User.
 
-	    if (existingVote.isPresent()) {
-	        throw new IllegalArgumentException("Usuário já votou nesta pauta.");
-	    }
+		if (existingVote.isPresent()) {
+			throw new IllegalArgumentException("Usuário já votou nesta pauta.");
+		}
 
-	    return repo.save(obj); 
+		return repo.save(obj);
 	}
 
 }

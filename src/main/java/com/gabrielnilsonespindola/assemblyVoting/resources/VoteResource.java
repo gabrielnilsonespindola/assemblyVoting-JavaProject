@@ -29,31 +29,30 @@ public class VoteResource {
 	public ResponseEntity<List<VoteDTO>> findAll() {
 		List<Vote> list = service.findAll();
 		List<VoteDTO> listDto = list.stream().map(x -> new VoteDTO(x)).collect(Collectors.toList());
-	    return ResponseEntity.ok().body(listDto);   
+		return ResponseEntity.ok().body(listDto);
 
 	}
-	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<VoteDTO> findById(@PathVariable String id) {
 		Vote obj = service.findById(id);
 		return ResponseEntity.ok().body(new VoteDTO(obj));
 	}
-	
-	@RequestMapping(method=RequestMethod.POST)
- 	public ResponseEntity<Void> insert(@RequestBody VoteDTO objDto) {        //GENERICO
+
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(@RequestBody VoteDTO objDto) { // GENERICO
 		Vote obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@PostMapping("/init")
 	public ResponseEntity<Void> registerVote(@RequestBody VoteDTO dto) {
-	    Vote obj = service.fromDTO(dto);
-	    obj = service.registerVote(obj); 
-	    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-	    return ResponseEntity.created(uri).build();
+		Vote obj = service.fromDTO(dto);
+		obj = service.registerVote(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
 	}
-	
 
 }

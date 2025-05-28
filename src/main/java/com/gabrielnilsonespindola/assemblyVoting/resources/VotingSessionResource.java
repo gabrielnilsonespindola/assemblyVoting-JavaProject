@@ -58,11 +58,11 @@ public class VotingSessionResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
-	@RequestMapping(value="/result/{agendaId}", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/result/{agendaId}", method = RequestMethod.GET)
 	public ResponseEntity<VotingResultDTO> getResult(@PathVariable String agendaId) {
-	    VotingResultDTO result = service.getVotingResult(agendaId);
-	    return ResponseEntity.ok().body(result);
+		VotingResultDTO result = service.getVotingResult(agendaId);
+		return ResponseEntity.ok().body(result);
 	}
 
 }

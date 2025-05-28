@@ -19,8 +19,7 @@ public class VotingSession implements Serializable {
 	private LocalDateTime opening;
 	private LocalDateTime closure;
 	private Agenda agenda;
-	private Long durationInMinutes;	
-	
+	private Long durationInMinutes;
 
 	@DBRef(lazy = true)
 	private List<Vote> votes = new ArrayList<>();

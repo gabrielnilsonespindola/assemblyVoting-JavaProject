@@ -9,14 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.gabrielnilsonespindola.assemblyVoting.domain.Vote;
 
 @Repository
-public interface VoteRepository extends MongoRepository<Vote , String> {
-	
+public interface VoteRepository extends MongoRepository<Vote, String> {
+
 	List<Vote> findByAgendaId(String agendaId);
-	
+
 	Optional<Vote> findByAgendaIdAndUserId(String agendaId, String userId);
-	
-	
-	
-	
 
 }

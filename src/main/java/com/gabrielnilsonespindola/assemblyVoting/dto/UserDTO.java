@@ -6,17 +6,17 @@ import com.gabrielnilsonespindola.assemblyVoting.domain.User;
 
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private String id;
 	private String name;
-	
+
 	public UserDTO() {
 	}
 
 	public UserDTO(User obj) {
-		
+
 		id = obj.getId();
-		name= obj.getName();		
+		name = obj.getName();
 	}
 
 	public String getId() {
@@ -34,9 +34,5 @@ public class UserDTO implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
-	
 
 }

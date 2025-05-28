@@ -2,18 +2,17 @@ package com.gabrielnilsonespindola.assemblyVoting.dto;
 
 import java.io.Serializable;
 
-
 public class VotingResultDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private String id;
 	private String agendaTitle;
-    private int yesVotes;
-    private int noVotes;
-    private String result;
-    
-    public VotingResultDTO() {
-    }
+	private int yesVotes;
+	private int noVotes;
+	private String result;
+
+	public VotingResultDTO() {
+	}
 
 	public VotingResultDTO(String id, String agendaTitle, int yesVotes, int noVotes, String result) {
 		super();
@@ -63,11 +62,5 @@ public class VotingResultDTO implements Serializable {
 	public void setResult(String result) {
 		this.result = result;
 	}
-    
-	
-		
-		
-    
-	
 
 }

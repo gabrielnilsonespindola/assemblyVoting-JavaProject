@@ -18,14 +18,14 @@ public class VoteDTO implements Serializable {
 
 	public VoteDTO() {
 	}
-	
+
 	public VoteDTO(Vote obj) {
 		id = obj.getId();
 		agendaId = obj.getAgenda();
 		userId = obj.getUser();
 		voteStatus = obj.getVoteStatus();
 		voteTime = obj.getVoteTime();
-				
+
 	}
 
 	public String getId() {
@@ -67,11 +67,5 @@ public class VoteDTO implements Serializable {
 	public void setVoteTime(LocalDateTime voteTime) {
 		this.voteTime = voteTime;
 	}
-	
-	
-	
-	
-
-	
 
 }

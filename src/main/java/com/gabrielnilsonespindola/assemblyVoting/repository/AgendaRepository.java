@@ -5,10 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.gabrielnilsonespindola.assemblyVoting.domain.Agenda;
 
-
 @Repository
-public interface AgendaRepository extends MongoRepository<Agenda , String> {
-	
-	
+public interface AgendaRepository extends MongoRepository<Agenda, String> {
 
 }

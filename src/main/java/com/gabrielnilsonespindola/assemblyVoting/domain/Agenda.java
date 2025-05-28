@@ -16,29 +16,28 @@ import com.gabrielnilsonespindola.assemblyVoting.enums.VoteStatus;
 @Document(collection = "agenda")
 public class Agenda implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private String id;
 	private String title;
 	private Integer number;
 	private String descricao;
 	private LocalDate date;
-	
+
 	@DBRef(lazy = true)
 	private List<Vote> votes = new ArrayList<>();
 
 	public Agenda() {
 	}
 
-	public Agenda(String id, String title,Integer number, LocalDate date) {
+	public Agenda(String id, String title, Integer number, LocalDate date) {
 		this.id = id;
 		this.title = title;
-		this.number = number;		// Construtor responsavel do AgendaDTO- InsertFormulary  New Agenda.
+		this.number = number; // Construtor responsavel do AgendaDTO- InsertFormulary New Agenda.
 		this.date = date;
-	}	
-	
-	
-	public Agenda(String id, String title,Integer number, String descricao, LocalDate date, List<Vote> votes) {
+	}
+
+	public Agenda(String id, String title, Integer number, String descricao, LocalDate date, List<Vote> votes) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -47,8 +46,6 @@ public class Agenda implements Serializable {
 		this.date = date;
 		this.votes = votes;
 	}
-
-	
 
 	public String getId() {
 		return id;
@@ -65,7 +62,7 @@ public class Agenda implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	public Integer getNumber() {
 		return number;
 	}
@@ -94,7 +91,6 @@ public class Agenda implements Serializable {
 		return votes;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -111,7 +107,5 @@ public class Agenda implements Serializable {
 		Agenda other = (Agenda) obj;
 		return Objects.equals(id, other.id);
 	}
-
-
 
 }

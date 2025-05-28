@@ -10,17 +10,16 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")
-public class User implements Serializable {		
+public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private String id;
 	private String name;
-	
+
 	@DBRef(lazy = true)
 	private List<Agenda> agendas = new ArrayList<>();
-	
-		
+
 	public User() {
 	}
 
@@ -28,7 +27,7 @@ public class User implements Serializable {
 		super();
 		this.id = id;
 		this.name = name;
-		
+
 	}
 
 	public String getId() {
@@ -46,7 +45,7 @@ public class User implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public List<Agenda> getAgendas() {
 		return agendas;
 	}
@@ -55,7 +54,6 @@ public class User implements Serializable {
 		this.agendas = agendas;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -72,7 +70,5 @@ public class User implements Serializable {
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
 
 }

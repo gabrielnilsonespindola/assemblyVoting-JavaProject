@@ -7,18 +7,17 @@ import com.gabrielnilsonespindola.assemblyVoting.domain.Agenda;
 
 public class AgendaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private String id;
 	private String title;
 	private Integer number;
 	private LocalDate date;
-	
-	
+
 	public AgendaDTO() {
 	}
-	
+
 	public AgendaDTO(Agenda obj) {
-		
+
 		id = obj.getId();
 		title = obj.getTitle();
 		number = obj.getNumber();
@@ -56,9 +55,5 @@ public class AgendaDTO implements Serializable {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
-	
-	
-	
 
 }

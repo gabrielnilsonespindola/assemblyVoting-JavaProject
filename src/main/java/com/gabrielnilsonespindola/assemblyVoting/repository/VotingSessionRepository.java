@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.gabrielnilsonespindola.assemblyVoting.domain.VotingSession;
 
 @Repository
-public interface VotingSessionRepository extends MongoRepository<VotingSession , String> {
-	
-	
+public interface VotingSessionRepository extends MongoRepository<VotingSession, String> {
 
 }
