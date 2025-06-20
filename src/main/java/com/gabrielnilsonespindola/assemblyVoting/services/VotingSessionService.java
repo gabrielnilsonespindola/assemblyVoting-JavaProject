@@ -53,6 +53,10 @@ public class VotingSessionService {
 
 	public VotingSession startSession(String agendaId, Optional<Long> durationInMinutes) {
 		Agenda agenda = service.findById(agendaId);
+		
+		if(agendaId.isEmpty()) {
+			throw new ObjectNotFoundException("PAUTA INEXISTENTE");
+		}
 
 		VotingSession session = new VotingSession();
 		session.setAgenda(agenda);
@@ -62,6 +66,7 @@ public class VotingSessionService {
 		session.setClosure(session.getOpening().plusMinutes(duration));
 
 		return repo.save(session);
+		
 	}
 
 	public VotingResultDTO getVotingResult(String agendaId) {
