@@ -10,7 +10,7 @@ Cada usuário pode votar apenas uma vez por pauta, garantindo integridade e impa
 
 Além disso, quando uma pauta é aberta para votação, ela possui um tempo de duração limitado. Após esse período, a sessão de votação é automaticamente encerrada, impedindo novos votos. Isso simula o funcionamento de assembleias reais, onde há um prazo definido para deliberação.
 
-O sistema foi desenvolvido utilizando o framework Spring Boot, com foco em boas práticas de API REST, validações de dados, organização de entidades e clareza nas regras de domínio. Ele também pode ser facilmente integrado a sistemas frontend ou aplicativos mobile.
+O sistema foi desenvolvido utilizando o framework Spring Boot, com foco em boas práticas de API REST, validações de dados, organização de entidades e clareza nas regras de domínio. Ele também pode ser facilmente integrado a sistemas frontend ou aplicativos mobile, possuindo como validação as suas regras de negócio os testes de unidade em sua camada de "Service".
 
 Este backend serve como uma base sólida para sistemas de votação em cooperativas, associações, empresas ou qualquer outro cenário onde decisões coletivas precisam ser tomadas de forma digital e transparente.
 
@@ -28,6 +28,8 @@ Este backend serve como uma base sólida para sistemas de votação em cooperati
 ● Spring Boot (utilizando Spring Tool Suite - STS)
 
 ● Spring Data MongoDB
+
+● JUnit 5 / Mockito
 
 ● Maven
 
