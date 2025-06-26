@@ -23,9 +23,9 @@ Este backend serve como uma base sólida para sistemas de votação em cooperati
 
 # Back end 
 
-●Java
+●Java 21
 
-● Spring Boot (utilizando Spring Tool Suite - STS)
+● Spring Boot 3.5 (utilizando Spring Tool Suite - STS)
 
 ● Spring Data MongoDB
 
@@ -60,6 +60,23 @@ cd assemblyVoting
 ● Executar o projeto
 
 ./mvnw spring-boot:run
+
+# Importando a collection do Postman
+Para facilitar os testes dos endpoints da API, este projeto inclui uma collection do Postman.
+
+# Como importar:
+
+● Abra o Postman
+
+● Clique em "Import" no canto superior esquerdo
+
+● Selecione a aba "File"
+
+● Clique em "Upload Files"
+
+● Escolha o arquivo assemblyVoting.postman_collection.json (incluso neste repositório na pasta raiz do projeto, subpasta "postman")
+
+● Clique em "Import"
 
 
 # Autor : 
