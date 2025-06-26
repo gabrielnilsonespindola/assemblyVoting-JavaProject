@@ -41,15 +41,7 @@ public class VotingSessionResource {
 		return ResponseEntity.ok().body(new VotingSessionDTO(obj));
 	}
 
-	@RequestMapping(method = RequestMethod.POST) // GENERICO
-	public ResponseEntity<Void> insert(@RequestBody VotingSessionDTO objDto) {
-		VotingSession obj = service.fromDTO(objDto);
-		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
-	}
-
-	@PostMapping("/init")
+	@PostMapping
 	public ResponseEntity<Void> startSession(@RequestBody VotingSessionDTO objDto) {
 		String agendaId = objDto.getAgenda().getId();
 		Optional<Long> duration = Optional.ofNullable(objDto.getDurationInMinutes());

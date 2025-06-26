@@ -38,10 +38,12 @@ public class VoteService {
 	}
 
 	public Vote fromDTO(VoteDTO dto) {
-		Agenda agenda = agendaService.findById(dto.getAgenda().getId());
-		User user = userService.findById(dto.getUser().getId());
+		Agenda agenda = agendaService.findById(dto.getAgendaId());
+	    User user = userService.findById(dto.getUserId());
 
-		return new Vote(null, agenda, user, dto.getVoteStatus(), LocalDateTime.now());
+	    LocalDateTime voteTime = Optional.ofNullable(dto.getVoteTime()).orElse(LocalDateTime.now());
+
+	    return new Vote(null, agenda, user, dto.getVoteStatus(), voteTime);
 	}
 
 	public Vote registerVote(Vote obj) {

@@ -1,21 +1,15 @@
 package com.gabrielnilsonespindola.assemblyVoting.services;
 
-import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.contains;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
-
-import java.time.Instant;
 import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -23,12 +17,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import com.gabrielnilsonespindola.assemblyVoting.domain.Agenda;
 import com.gabrielnilsonespindola.assemblyVoting.domain.User;
 import com.gabrielnilsonespindola.assemblyVoting.domain.Vote;
 import com.gabrielnilsonespindola.assemblyVoting.repository.VoteRepository;
-import com.gabrielnilsonespindola.assemblyVoting.services.exceptions.ObjectNotFoundException;
 
 @ExtendWith(MockitoExtension.class)
 public class VoteServiceTest {

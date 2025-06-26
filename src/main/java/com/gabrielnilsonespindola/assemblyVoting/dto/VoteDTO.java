@@ -2,8 +2,6 @@ package com.gabrielnilsonespindola.assemblyVoting.dto;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import com.gabrielnilsonespindola.assemblyVoting.domain.Agenda;
-import com.gabrielnilsonespindola.assemblyVoting.domain.User;
 import com.gabrielnilsonespindola.assemblyVoting.domain.Vote;
 import com.gabrielnilsonespindola.assemblyVoting.enums.VoteStatus;
 
@@ -11,8 +9,8 @@ public class VoteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String id;
-	private Agenda agendaId;
-	private User userId;
+	private String agendaId;
+	private String userId;
 	private VoteStatus voteStatus;
 	private LocalDateTime voteTime;
 
@@ -21,8 +19,8 @@ public class VoteDTO implements Serializable {
 
 	public VoteDTO(Vote obj) {
 		id = obj.getId();
-		agendaId = obj.getAgenda();
-		userId = obj.getUser();
+		agendaId = obj.getId();
+		userId = obj.getId();
 		voteStatus = obj.getVoteStatus();
 		voteTime = obj.getVoteTime();
 
@@ -36,20 +34,20 @@ public class VoteDTO implements Serializable {
 		this.id = id;
 	}
 
-	public Agenda getAgenda() {
+	public String getAgendaId() {
 		return agendaId;
 	}
 
-	public void setAgenda(Agenda agenda) {
-		this.agendaId = agenda;
+	public void setAgendaId(String agendaId) {
+		this.agendaId = agendaId;
 	}
 
-	public User getUser() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUser(User user) {
-		this.userId = user;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public VoteStatus getVoteStatus() {
