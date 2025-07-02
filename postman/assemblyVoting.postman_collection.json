@@ -67,7 +67,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/sessions/",
+							"raw": "http://localhost:8080/sessions/68654ab77547e078af7ac08e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -75,7 +75,7 @@
 							"port": "8080",
 							"path": [
 								"sessions",
-								""
+								"68654ab77547e078af7ac08e"
 							]
 						}
 					},
@@ -338,7 +338,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/votes/1",
+							"raw": "http://localhost:8080/votes/68654a1b7547e078af7ac08d",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -346,7 +346,7 @@
 							"port": "8080",
 							"path": [
 								"votes",
-								"1"
+								"68654a1b7547e078af7ac08d"
 							]
 						}
 					},
@@ -369,7 +369,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"agendaId\": \"1\",\r\n  \"userId\": \"682252ed924f5a7c8e980e8e\",\r\n  \"voteStatus\": \"YES\",\r\n  \"voteTime\": \"2025-06-25T14:30:00\"\r\n}",
+							"raw": "{\r\n  \"agendaId\": \"1\",\r\n  \"userId\": \"60c72b2f9b1d8b3f6c8f9f11\",\r\n  \"voteStatus\": \"YES\",\r\n  \"voteTime\": \"2025-06-25T14:30:00\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -458,7 +458,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/682252ed924f5a7c8e980e8e",
+							"raw": "http://localhost:8080/users/60c72b2f9b1d8b3f6c8f9f11",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -466,7 +466,38 @@
 							"port": "8080",
 							"path": [
 								"users",
-								"682252ed924f5a7c8e980e8e"
+								"60c72b2f9b1d8b3f6c8f9f11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users Id/agendas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJteWJhY2tlbmQiLCJzdWIiOiIyIiwiZXhwIjoxNzQ4OTc0ODEyLCJpYXQiOjE3NDg5NzQ1MTIsInNjb3BlIjoiYmFzaWMifQ.USrqJHkrk_0TUuhQCGgyJDScBc6jg55SzO1CBmp22RppICFCyLulEzvcgvD-ZQMZUq51OeNM0ym5TknxELAMUd0_h9MSqQcdqVptoiwz5mrtrRPBfc5OPy4SFY8y-LcFUENa3vgGYRJhQjS4qynTN7s-2obpoO7II6-RfUTTorGgnY1x5j5lB9kQWaWEDyc17_sntpN4qP4tdvq036g8J2gI8GfQeYRL3uqKCGspzWPG6EI80YD49sNfDUQ8wNHTUF_BHenWkbhI4ljd9TYwn5vGj5S-75mepqntyIgfQxIK7uoSD0WCJF4Def46PCYOL61Bi6P1x08txZD1EY10mg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/60c72b2f9b1d8b3f6c8f9f11/agendas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"60c72b2f9b1d8b3f6c8f9f11",
+								"agendas"
 							]
 						}
 					},
