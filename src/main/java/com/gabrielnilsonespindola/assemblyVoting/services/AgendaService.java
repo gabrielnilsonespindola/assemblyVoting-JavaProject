@@ -8,7 +8,9 @@ import com.gabrielnilsonespindola.assemblyVoting.domain.Agenda;
 import com.gabrielnilsonespindola.assemblyVoting.dto.AgendaDTO;
 import com.gabrielnilsonespindola.assemblyVoting.repository.AgendaRepository;
 import com.gabrielnilsonespindola.assemblyVoting.services.exceptions.ObjectNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class AgendaService {
 
@@ -21,7 +23,10 @@ public class AgendaService {
 
 	public Agenda findById(String id) {
 		Optional<Agenda> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+		return obj.orElseThrow(() -> {
+	        log.error("Agenda com ID {} não encontrado", id);
+	        return new ObjectNotFoundException("Objeto não encontrado");
+	    });
 	}
 
 	public Agenda insertFormulary(Agenda obj) {

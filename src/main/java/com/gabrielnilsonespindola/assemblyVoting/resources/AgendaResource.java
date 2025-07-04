@@ -49,9 +49,9 @@ public class AgendaResource {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insertFormulary(@RequestBody AgendaDTO objDto) {
 		log.info("Inicio do Metodo insertFormulary");
-		Agenda obj = service.fromDTO(objDto);
-		log.info("Chamada fromDTO");
+		Agenda obj = service.fromDTO(objDto);		
 		obj = service.insertFormulary(obj);
+		log.info("Chamada metodo insertFormulary {}" , obj.getId());
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		log.info("Retorno metodo insertFormulary {}",uri);		
 		log.info("Final do metodo insertFormulary");

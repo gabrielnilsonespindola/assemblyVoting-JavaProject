@@ -11,7 +11,9 @@ import com.gabrielnilsonespindola.assemblyVoting.domain.Vote;
 import com.gabrielnilsonespindola.assemblyVoting.dto.VoteDTO;
 import com.gabrielnilsonespindola.assemblyVoting.repository.VoteRepository;
 import com.gabrielnilsonespindola.assemblyVoting.services.exceptions.ObjectNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class VoteService {
 
@@ -30,7 +32,10 @@ public class VoteService {
 
 	public Vote findById(String id) {
 		Optional<Vote> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+		return obj.orElseThrow(() -> {
+	        log.error("Vote com ID {} não encontrado", id);
+	        return new ObjectNotFoundException("Objeto/Vote não encontrado");
+	    });
 	}
 
 	public Vote insert(Vote obj) {
@@ -53,6 +58,7 @@ public class VoteService {
 		Optional<Vote> existingVote = repo.findByAgendaIdAndUserId(agendaId, userId);
 
 		if (existingVote.isPresent()) {
+			log.warn("USUARIO JA VOTOU NESTA PAUTA {}" , existingVote.isPresent());
 			throw new IllegalArgumentException("Usuário já votou nesta pauta.");
 		}
 

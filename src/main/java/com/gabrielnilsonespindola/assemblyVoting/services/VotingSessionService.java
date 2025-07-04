@@ -3,11 +3,9 @@ package com.gabrielnilsonespindola.assemblyVoting.services;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.stereotype.Service;
-
 import com.gabrielnilsonespindola.assemblyVoting.domain.Agenda;
 import com.gabrielnilsonespindola.assemblyVoting.domain.Vote;
 import com.gabrielnilsonespindola.assemblyVoting.domain.VotingSession;
@@ -17,7 +15,9 @@ import com.gabrielnilsonespindola.assemblyVoting.enums.VoteStatus;
 import com.gabrielnilsonespindola.assemblyVoting.repository.VoteRepository;
 import com.gabrielnilsonespindola.assemblyVoting.repository.VotingSessionRepository;
 import com.gabrielnilsonespindola.assemblyVoting.services.exceptions.ObjectNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class VotingSessionService {
 
@@ -39,7 +39,10 @@ public class VotingSessionService {
 
 	public VotingSession findById(String id) {
 		Optional<VotingSession> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+		return obj.orElseThrow(() -> {
+	        log.error("VotingSession com ID {} não encontrado", id);
+	        return new ObjectNotFoundException("Objeto/VotingSession não encontrado");
+	    });
 	}
 
 	public VotingSession insert(VotingSession obj) {
@@ -55,6 +58,7 @@ public class VotingSessionService {
 		Agenda agenda = service.findById(agendaId);
 		
 		if(agendaId.isEmpty()) {
+			log.warn("PAUTA INEXISTENTE {}" , agendaId.isEmpty());
 			throw new ObjectNotFoundException("PAUTA INEXISTENTE");
 		}
 
