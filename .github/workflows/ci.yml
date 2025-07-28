@@ -35,8 +35,8 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
-    - name: Build 
-      run: 	mvn clean package -DskipTests
+    - name: Build e rodar testes
+      run: mvn clean install
 
     - name: Build Docker image AssemblyVoting
       run: docker build -t assemblyvoting:latest -f dockerAssemblyVoting/Dockerfile .
