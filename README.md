@@ -33,6 +33,12 @@ Este backend serve como uma base sólida para sistemas de votação em cooperati
 
 ● Maven
 
+● Docker
+
+● Docker Desktop
+
+● GitHub Actions Pipeline CI
+
 # Banco de dados 
 
 ● Mongo DB
@@ -60,6 +66,10 @@ cd assemblyVoting
 ● Executar o projeto
 
 ./mvnw spring-boot:run
+
+● SEGUNDA OPÇÃO : 
+
+Utilizar docker compose no terminal na pasta diretorio do projeto para subir aplicação , e para isto é necessário ter o Docker Desktop instalado.
 
 # Importando a collection do Postman
 Para facilitar os testes dos endpoints da API, este projeto inclui uma collection do Postman.
