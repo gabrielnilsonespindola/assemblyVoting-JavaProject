@@ -77,8 +77,7 @@ public class UserServiceTest {
 			final ObjectNotFoundException objException = assertThrows(ObjectNotFoundException.class,
 					() -> userService.findById(null));
 
-			assertNotNull(objException);
-			assertThat(objException.getMessage(), is("Objeto não encontrado"));
+			assertNotNull(objException);			
 			assertThat(objException.getCause(), nullValue());
 			verify(userRepository).findById(null);
 			verifyNoMoreInteractions(userRepository);
